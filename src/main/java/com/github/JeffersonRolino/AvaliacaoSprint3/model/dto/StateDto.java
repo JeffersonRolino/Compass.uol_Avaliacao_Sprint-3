@@ -1,5 +1,7 @@
 package com.github.JeffersonRolino.AvaliacaoSprint3.model.dto;
 
+import com.github.JeffersonRolino.AvaliacaoSprint3.model.entity.State;
+
 public class StateDto {
     private Long id;
     private String name;
@@ -18,6 +20,15 @@ public class StateDto {
         this.population = population;
         this.capital = capital;
         this.area = area;
+    }
+
+    public StateDto(State state) {
+        this.id = state.getId();
+        this.name = state.getName();
+        this.region = state.getRegion();
+        this.population = state.getPopulation();
+        this.capital = state.getCapital();
+        this.area = state.getArea();
     }
 
     public Long getId() {

@@ -1,5 +1,7 @@
 package com.github.JeffersonRolino.AvaliacaoSprint3.model.entity;
 
+import com.github.JeffersonRolino.AvaliacaoSprint3.model.dto.StateDto;
+
 import javax.persistence.*;
 
 @Entity
@@ -19,6 +21,15 @@ public class State {
         this.name = name;
         this.region = region;
         this.population = population;
+    }
+
+    public State(StateDto stateDto) {
+        this.id = stateDto.getId();
+        this.name = stateDto.getName();
+        this.region = stateDto.getRegion();
+        this.population = stateDto.getPopulation();
+        this.capital = stateDto.getCapital();
+        this.area = stateDto.getArea();
     }
 
     public Long getId() {
