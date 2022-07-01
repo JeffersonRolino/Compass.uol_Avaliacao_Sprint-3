@@ -3,13 +3,11 @@ package com.github.JeffersonRolino.AvaliacaoSprint3.controller;
 import com.github.JeffersonRolino.AvaliacaoSprint3.model.dto.StateDto;
 import com.github.JeffersonRolino.AvaliacaoSprint3.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.swing.text.html.Option;
 import java.net.URI;
 import java.util.List;
 
@@ -45,14 +43,21 @@ public class StateController {
         return states;
     }
 
-
     @GetMapping
-    public List<StateDto> listOfStates(String region)
-    {
-        if(region == null){
+    public List<StateDto> listOfStates(String region, boolean sortByPopulation, boolean sortByArea){
+
+        if(region != null && stateService.isValidRegion(region)){
+            return stateService.getStateByRegion(region);
+        }
+        else if(sortByPopulation){
+            return stateService.sortByPopulation();
+        }
+        else if(sortByArea){
+            return stateService.sortByArea();
+        }
+        else {
             return stateService.getAllStates();
         }
-        return stateService.getStateByRegion(region);
     }
 
     @GetMapping("/{id}")

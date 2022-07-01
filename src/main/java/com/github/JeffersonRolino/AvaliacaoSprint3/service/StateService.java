@@ -4,6 +4,7 @@ import com.github.JeffersonRolino.AvaliacaoSprint3.model.dto.StateDto;
 import com.github.JeffersonRolino.AvaliacaoSprint3.model.entity.State;
 import com.github.JeffersonRolino.AvaliacaoSprint3.repository.StateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -30,11 +31,19 @@ public class StateService {
     }
 
     public List<StateDto> getAllStates(){
-            return stateRepository.findAll().stream().map(StateDto::new).collect(Collectors.toList());
+        return stateRepository.findAll().stream().map(StateDto::new).collect(Collectors.toList());
     }
 
-    public List<StateDto> getStateByRegion(String field){
-        return stateRepository.findByRegion(field);
+    public List<StateDto> getStateByRegion(String region){
+        return stateRepository.findByRegion(region).stream().map(StateDto::new).collect(Collectors.toList());
+    }
+
+    public List<StateDto> sortByPopulation(){
+        return stateRepository.findAll(Sort.by(Sort.Direction.DESC, "population")).stream().map(StateDto::new).collect(Collectors.toList());
+    }
+
+    public List<StateDto> sortByArea() {
+        return stateRepository.findAll(Sort.by(Sort.Direction.DESC, "area")).stream().map(StateDto::new).collect(Collectors.toList());
     }
 
     public ResponseEntity<StateDto> findById(Long id){
@@ -84,7 +93,4 @@ public class StateService {
                 region.equalsIgnoreCase("Sudeste") ||
                 region.equalsIgnoreCase("Centro-Oeste");
     }
-
-
-
 }
