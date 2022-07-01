@@ -19,12 +19,22 @@ public class StateService {
 
     public StateDto addNewState(StateDto stateDto){
 
-        State savedState = stateRepository.save(new State(stateDto));
-        return new StateDto(savedState);
+        if(isValidRegion(stateDto.getRegion())){
+            State savedState = stateRepository.save(new State(stateDto));
+            return new StateDto(savedState);
+        }
+        else {
+            return null;
+        }
+
     }
 
     public List<StateDto> getAllStates(){
             return stateRepository.findAll().stream().map(StateDto::new).collect(Collectors.toList());
+    }
+
+    public List<StateDto> getStateByRegion(String field){
+        return stateRepository.findByRegion(field);
     }
 
     public ResponseEntity<StateDto> findById(Long id){
@@ -45,6 +55,15 @@ public class StateService {
         return ResponseEntity.notFound().build();
     }
 
+    public ResponseEntity<StateDto> deleteStateById(Long id){
+        Optional<State> targetState = stateRepository.findById(id);
+        if(targetState.isPresent()){
+            stateRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
+    }
+
 
     public State update(Long id, StateRepository stateRepository, StateDto stateDto){
         State state = stateRepository.getReferenceById(id);
@@ -57,6 +76,15 @@ public class StateService {
 
         return state;
     }
+
+    public boolean isValidRegion(String region){
+        return region.equalsIgnoreCase("Norte") ||
+                region.equalsIgnoreCase("Nordeste") ||
+                region.equalsIgnoreCase("Sul") ||
+                region.equalsIgnoreCase("Sudeste") ||
+                region.equalsIgnoreCase("Centro-Oeste");
+    }
+
 
 
 }

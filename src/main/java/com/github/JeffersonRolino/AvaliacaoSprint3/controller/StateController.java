@@ -23,15 +23,36 @@ public class StateController {
     @PostMapping
     public ResponseEntity<StateDto> addNewState(@RequestBody StateDto state, UriComponentsBuilder uriComponentsBuilder){
 
-        StateDto stateDto = stateService.addNewState(state);
-
-        URI uri = uriComponentsBuilder.path("/api/states/{id}").buildAndExpand(state.getId()).toUri();
-        return ResponseEntity.created(uri).body(stateDto);
+        if(stateService.isValidRegion(state.getRegion())){
+            StateDto stateDto = stateService.addNewState(state);
+            URI uri = uriComponentsBuilder.path("/api/states/{id}").buildAndExpand(state.getId()).toUri();
+            return ResponseEntity.created(uri).body(stateDto);
+        }
+        else{
+            return ResponseEntity.badRequest().build();
+        }
     }
 
+
+    // Endpoint para facilitar a vida e inserir um Array de JSON Objects para testes...
+    // Está retornando 200 e o array inserido, mas não 201...
+    @PostMapping("/insert")
+    public List<StateDto> addMultipleStates(@RequestBody List<StateDto> states){
+
+        for(StateDto state : states){
+            stateService.addNewState(state);
+        }
+        return states;
+    }
+
+
     @GetMapping
-    public List<StateDto> listOfStates(){
-        return stateService.getAllStates();
+    public List<StateDto> listOfStates(String region)
+    {
+        if(region == null){
+            return stateService.getAllStates();
+        }
+        return stateService.getStateByRegion(region);
     }
 
     @GetMapping("/{id}")
@@ -43,4 +64,10 @@ public class StateController {
     public ResponseEntity<StateDto> updateStateById(@PathVariable() Long id, @RequestBody StateDto stateDto){
         return stateService.updateStateById(id, stateDto);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<StateDto> deleteStateById(@PathVariable Long id){
+        return stateService.deleteStateById(id);
+    }
+
 }
