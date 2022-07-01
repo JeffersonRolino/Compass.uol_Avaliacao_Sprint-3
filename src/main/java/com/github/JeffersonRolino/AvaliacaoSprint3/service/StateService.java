@@ -32,7 +32,31 @@ public class StateService {
         if(state.isPresent()){
             return ResponseEntity.ok(new StateDto(state.get()));
         }
-        return null;
+        return ResponseEntity.badRequest().build();
     }
+
+    public ResponseEntity<StateDto> updateStateById(Long id, StateDto stateDto){
+        Optional<State> targetState = stateRepository.findById(id);
+        if(targetState.isPresent()){
+            State state = update(id, stateRepository, stateDto);
+            stateRepository.save(state);
+            return ResponseEntity.ok(new StateDto(state));
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+
+    public State update(Long id, StateRepository stateRepository, StateDto stateDto){
+        State state = stateRepository.getReferenceById(id);
+
+        state.setName(stateDto.getName());
+        state.setRegion(stateDto.getRegion());
+        state.setPopulation(stateDto.getPopulation());
+        state.setCapital(stateDto.getCapital());
+        state.setArea(stateDto.getArea());
+
+        return state;
+    }
+
 
 }

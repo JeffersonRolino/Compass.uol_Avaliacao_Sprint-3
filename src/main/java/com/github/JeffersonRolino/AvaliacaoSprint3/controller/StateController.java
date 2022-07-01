@@ -3,6 +3,8 @@ package com.github.JeffersonRolino.AvaliacaoSprint3.controller;
 import com.github.JeffersonRolino.AvaliacaoSprint3.model.dto.StateDto;
 import com.github.JeffersonRolino.AvaliacaoSprint3.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -35,5 +37,10 @@ public class StateController {
     @GetMapping("/{id}")
     public ResponseEntity<StateDto> findById(@PathVariable() Long id){
         return stateService.findById(id);
+    }
+
+    @PutMapping("/{id}") @Modifying(clearAutomatically = true)
+    public ResponseEntity<StateDto> updateStateById(@PathVariable() Long id, @RequestBody StateDto stateDto){
+        return stateService.updateStateById(id, stateDto);
     }
 }

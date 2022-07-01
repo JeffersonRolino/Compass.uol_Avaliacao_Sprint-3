@@ -55,4 +55,24 @@ public class State {
     public double getArea() {
         return area;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
+    }
+
+    public void setPopulation(int population) {
+        this.population = population;
+    }
+
+    public void setCapital(String capital) {
+        this.capital = capital;
+    }
+
+    public void setArea(double area) {
+        this.area = area;
+    }
 }
