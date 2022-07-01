@@ -4,10 +4,12 @@ import com.github.JeffersonRolino.AvaliacaoSprint3.model.dto.StateDto;
 import com.github.JeffersonRolino.AvaliacaoSprint3.service.StateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import javax.swing.text.html.Option;
+import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/states")
@@ -17,12 +19,21 @@ public class StateController {
     private StateService stateService;
 
     @PostMapping
-    public ResponseEntity<StateDto> addNewState(@RequestBody StateDto state){
-        System.out.println("Realizando Cadastro de Estado...");
+    public ResponseEntity<StateDto> addNewState(@RequestBody StateDto state, UriComponentsBuilder uriComponentsBuilder){
 
         StateDto stateDto = stateService.addNewState(state);
 
-        return ResponseEntity.ok(stateDto);
+        URI uri = uriComponentsBuilder.path("/api/states/{id}").buildAndExpand(state.getId()).toUri();
+        return ResponseEntity.created(uri).body(stateDto);
     }
 
+    @GetMapping
+    public List<StateDto> listOfStates(){
+        return stateService.getAllStates();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<StateDto> findById(@PathVariable() Long id){
+        return stateService.findById(id);
+    }
 }
