@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "028ed9e9-2a4a-4253-80d3-3e07961cf87f",
+		"name": "CompassAvaliaçãoSprint3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9944971"
+	},
+	"item": [
+		{
+			"name": "Cadastrar Estado",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Bahia\",\r\n    \"region\": \"Nordeste\",\r\n    \"population\": 14985284,\r\n    \"capital\": \"Salvador\",\r\n    \"area\": 564760.427\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/states/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastrar Múltiplos Estados",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"name\": \"Acre\",\r\n        \"region\": \"Norte\",\r\n        \"population\": 906876,\r\n        \"capital\": \"Rio Branco\",\r\n        \"area\": 164123.964\r\n    },\r\n    {\r\n        \"name\": \"Alagoas\",\r\n        \"region\": \"Nordeste\",\r\n        \"population\": 3365351,\r\n        \"capital\": \"Maceió\",\r\n        \"area\": 27843.295\r\n    },\r\n    {\r\n        \"name\": \"Amapá\",\r\n        \"region\": \"Norte\",\r\n        \"population\": 877613,\r\n        \"capital\": \"Macapá\",\r\n        \"area\": 142470.762\r\n    },\r\n    {\r\n        \"name\": \"Amazonas\",\r\n        \"region\": \"Norte\",\r\n        \"population\": 4269995,\r\n        \"capital\": \"Manaus\",\r\n        \"area\": 1559167.889\r\n    },\r\n    {\r\n        \"name\": \"Bahia\",\r\n        \"region\": \"Nordeste\",\r\n        \"population\": 14985284,\r\n        \"capital\": \"Salvador\",\r\n        \"area\": 564760.427\t\r\n    },\r\n    {\r\n        \"name\": \"Ceará\",\r\n        \"region\": \"Nordeste\",\r\n        \"population\": 9240580,\r\n        \"capital\": \"Fortaleza\",\r\n        \"area\": 148894.441\r\n    },\r\n    {\r\n        \"name\": \"Distrito Federal\",\r\n        \"region\": \"Centro-Oeste\",\r\n        \"population\": 3094325,\r\n        \"capital\": \"Brasília\",\r\n        \"area\": 5760.783\r\n    },\r\n    {\r\n        \"name\": \"Espírito Santo\",\r\n        \"region\": \"Sudeste\",\r\n        \"population\": 4108508,\r\n        \"capital\": \"Vitória\",\r\n        \"area\": 46074.447\r\n    },\r\n    {\r\n        \"name\": \"Goiás\",\r\n        \"region\": \"Centro-Oeste\",\r\n        \"population\": 7206589,\r\n        \"capital\": \"Vitória\",\r\n        \"area\": 340203.329\r\n    },\r\n    {\r\n        \"name\": \"Maranhão\",\r\n        \"region\": \"Nordeste\",\r\n        \"population\": 7153262,\r\n        \"capital\": \"São Luís\",\r\n        \"area\": 329642.182\r\n    },\r\n    {\r\n        \"name\": \"Mato Grosso\",\r\n        \"region\": \"Centro-Oeste\",\r\n        \"population\": 3567234,\r\n        \"capital\": \"Cuiabá\",\r\n        \"area\": 903207.019\r\n    },\r\n    {\r\n        \"name\": \"Mato Grosso do Sul\",\r\n        \"region\": \"Centro-Oeste\",\r\n        \"population\": 2839188,\r\n        \"capital\": \"Campo Grande\",\r\n        \"area\": 357145.534\r\n    },\r\n    {\r\n        \"name\": \"Minas Gerais\",\r\n        \"region\": \"Sudeste\",\r\n        \"population\": 21411923,\r\n        \"capital\": \"Belo Horizonte\",\r\n        \"area\": 586521.123\r\n    },\r\n    {\r\n        \"name\": \"Pará\",\r\n        \"region\": \"Norte\",\r\n        \"population\": 8777124,\r\n        \"capital\": \"Belém\",\r\n        \"area\": 1245870.798\r\n    },\r\n    {\r\n        \"name\": \"Paraíba\",\r\n        \"region\": \"Nordeste\",\r\n        \"population\": 4059905,\r\n        \"capital\": \"João Pessoa\",\r\n        \"area\": 56467.242\r\n    },\r\n    {\r\n        \"name\": \"Paraná\",\r\n        \"region\": \"Sul\",\r\n        \"population\": 11597484,\r\n        \"capital\": \"Curitiba\",\r\n        \"area\": 199298.979\r\n    },\r\n    {\r\n        \"name\": \"Pernambuco\",\r\n        \"region\": \"Nordeste\",\r\n        \"population\": 9674793,\r\n        \"capital\": \"Recife\",\r\n        \"area\": 98067.881\r\n    },\r\n    {\r\n        \"name\": \"Piauí\",\r\n        \"region\": \"Nordeste\",\r\n        \"population\": 3289290,\r\n        \"capital\": \"Teresina\",\r\n        \"area\": 251756.515\r\n    },\r\n    {\r\n        \"name\": \"Rio de Janeiro\",\r\n        \"region\": \"Sudeste\",\r\n        \"population\": 17463349,\r\n        \"capital\": \"Rio de Janeiro\",\r\n        \"area\": 43750.427\r\n    },\r\n    {\r\n        \"name\": \"Rio Grande do Norte\",\r\n        \"region\": \"Nordeste\",\r\n        \"population\": 3560903,\r\n        \"capital\": \"Natal\",\r\n        \"area\": 52809.602\r\n    },\r\n    {\r\n        \"name\": \"Rio Grande do Sul\",\r\n        \"region\": \"Sul\",\r\n        \"population\": 11466630,\r\n        \"capital\": \"Porto Alegre\",\r\n        \"area\": 281707.156\r\n    },\r\n    {\r\n        \"name\": \"Rondônia\",\r\n        \"region\": \"Norte\",\r\n        \"population\": 1815278,\r\n        \"capital\": \"Porto Velho\",\r\n        \"area\": 237765.24\r\n    },\r\n    {\r\n        \"name\": \"Roraima\",\r\n        \"region\": \"Norte\",\r\n        \"population\": 652713,\r\n        \"capital\": \"Boa Vista\",\r\n        \"area\": 223644.527\r\n    },\r\n    {\r\n        \"name\": \"Santa Catarina\",\r\n        \"region\": \"Sul\",\r\n        \"population\": 7338473,\r\n        \"capital\": \"Florianópolis\",\r\n        \"area\": 95730.684\r\n    },\r\n    {\r\n        \"name\": \"São Paulo\",\r\n        \"region\": \"Sudeste\",\r\n        \"population\": 46649132,\r\n        \"capital\": \"São Paulo\",\r\n        \"area\": 248219.481\r\n    },\r\n    {\r\n        \"name\": \"Sergipe\",\r\n        \"region\": \"Nordeste\",\r\n        \"population\": 2338474,\r\n        \"capital\": \"Aracaju\",\r\n        \"area\": 21925.424\r\n    },\r\n    {\r\n        \"name\": \"Tocantins\",\r\n        \"region\": \"Norte\",\r\n        \"population\": 1607363,\r\n        \"capital\": \"Palmas\",\r\n        \"area\": 277466.763\r\n    }    \r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/states/insert",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states",
+						"insert"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Estados",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Busca por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filtrar por Estado",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states?region=Sul",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states"
+					],
+					"query": [
+						{
+							"key": "region",
+							"value": "Sul"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ordenar por População",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states?sortByPopulation=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states"
+					],
+					"query": [
+						{
+							"key": "region",
+							"value": "Sudeste",
+							"disabled": true
+						},
+						{
+							"key": "sortByPopulation",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ordenar Por Área",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states?sortByArea=true",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states"
+					],
+					"query": [
+						{
+							"key": "sortByArea",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar por ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Rio de Janeiro\",\r\n    \"region\": \"Sudeste\",\r\n    \"population\": 17463349,\r\n    \"capital\": \"Rio de Janeiro\",\r\n    \"area\": 43750.427\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/states/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remover por ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/states/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"states",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -51,7 +51,7 @@ public class StateService {
         if(state.isPresent()){
             return ResponseEntity.ok(new StateDto(state.get()));
         }
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.notFound().build();
     }
 
     public ResponseEntity<StateDto> updateStateById(Long id, StateDto stateDto){

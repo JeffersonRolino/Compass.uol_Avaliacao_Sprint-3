@@ -1,0 +1,145 @@
+openapi: 3.0.1
+info:
+  title: API de Estados - Avaliação Sprint 3 Compass.UOL
+  description: API para consultar e adicionar Estados brasileiros. A inserção só é permitida caso a Região seja válida e a API também permite filtrar Estados por Região, ordená-los por População e por Área.
+  version: 0.0.1
+  termsOfService: https://github.com/JeffersonRolino/Compass.uol_Avaliacao_Sprint-3
+  contact:
+    name: Jefferson Rolino da Silva
+    email: jefferson.silva.pb@compasso.com.br
+    url: https://github.com/JeffersonRolino
+  license:
+    name: "Lincença: GPLv3"
+    url: https://www.gnu.org/licenses/gpl-3.0.html
+externalDocs:
+  description: Documentação burocrática
+  url: https://github.com/JeffersonRolino/Compass.uol_Avaliacao_Sprint-3
+servers:
+- url: http://localhost:8080/
+  description: API de Estados Brasileiros
+paths:
+  /api/states:
+    post:
+      summary: Cadastra um novo Estado
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/State"
+      responses:
+        201:
+          description: "Sucesso"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/State"
+    get:
+      summary: Devolve um array com todos os Estados cadastrados.
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/States"
+      parameters:
+        - in: query
+          name: region
+          schema:
+            type: string
+          description: Filtra os Estado por Região (Norte, Nordeste, Sul, Sudeste e Centro-Oeste).
+        - in: query
+          name: sortByPopulation
+          schema:
+            type: boolean
+          description: Ordena os Estados por População do maior para o menor.
+        - in: query
+          name: sortByArea
+          schema:
+            type: boolean
+          description: Ordena os Estados por Área da maior para a menor.
+  /api/states/{id}:
+    parameters:
+    - name: id
+      in: path
+      schema:
+        type: integer
+      required: true
+    get:
+      summary: Recupera um Estado pelo ID
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/State"
+        404:
+          description: Estado não encontrado.
+          content:
+            application/json:
+              example: "Not Found"
+    put:
+      summary: Atualiza um Estado pelo ID.
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/State"
+        404:
+          description: Estado não encontrado.
+          content:
+            application/json:
+              example: "Not Found"
+    delete:
+      summary: Deleta um Estado pelo ID.
+      responses:
+        200:
+          description: Sucesso
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/State"
+        404:
+          description: Estado não encontrado.
+          content:
+            application/json:
+              example: "Not Found"
+  /api/states/insert:
+    post:
+      summary: Cadastra um Array de Estados.
+      requestBody:
+        content:
+          application/json:
+            schema:
+                $ref: "#/components/schemas/States"
+      responses:
+        200:
+          description: "Sucesso"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/States"
+components:
+  schemas:
+    State:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        region:
+          type: string
+        population:
+          type: integer
+        capital:
+          type: string
+        area:
+          type: integer
+    States:
+      type: array
+      items:
+        $ref: "#/components/schemas/State"
