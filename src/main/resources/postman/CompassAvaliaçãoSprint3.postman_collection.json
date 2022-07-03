@@ -81,6 +81,26 @@
 					"path": [
 						"api",
 						"states"
+					],
+					"query": [
+						{
+							"key": "region",
+							"value": "Nordeste",
+							"description": "Filtra os Estados pela Região Nordeste",
+							"disabled": true
+						},
+						{
+							"key": "sortByPopulation",
+							"value": "true",
+							"description": "Ordena os Estados por População",
+							"disabled": true
+						},
+						{
+							"key": "sortByArea",
+							"value": "true",
+							"description": "Ordena os Estados por Área em km",
+							"disabled": true
+						}
 					]
 				}
 			},
@@ -92,7 +112,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/states/3",
+					"raw": "http://localhost:8080/api/states/9",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -101,19 +121,19 @@
 					"path": [
 						"api",
 						"states",
-						"3"
+						"9"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "Filtrar por Estado",
+			"name": "Filtrar por Região",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/states?region=Sul",
+					"raw": "http://localhost:8080/api/states?region=Norte",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -126,7 +146,32 @@
 					"query": [
 						{
 							"key": "region",
-							"value": "Sul"
+							"value": "Norte",
+							"description": "Filtra os Estados pela Região Norte"
+						},
+						{
+							"key": "region",
+							"value": "Nordeste",
+							"description": "Filtra os Estados pela Região Nordeste",
+							"disabled": true
+						},
+						{
+							"key": "region",
+							"value": "Centro-Oeste",
+							"description": "Filtra os Estados pela Região Centro-Oeste",
+							"disabled": true
+						},
+						{
+							"key": "region",
+							"value": "Sudeste",
+							"description": "Filtra os Estados pela Região Sudeste",
+							"disabled": true
+						},
+						{
+							"key": "region",
+							"value": "Sul",
+							"description": "Filtra os Estados pela Região Sul",
+							"disabled": true
 						}
 					]
 				}
@@ -151,13 +196,9 @@
 					],
 					"query": [
 						{
-							"key": "region",
-							"value": "Sudeste",
-							"disabled": true
-						},
-						{
 							"key": "sortByPopulation",
-							"value": "true"
+							"value": "true",
+							"description": "Ordena os Estados por População"
 						}
 					]
 				}
@@ -183,7 +224,8 @@
 					"query": [
 						{
 							"key": "sortByArea",
-							"value": "true"
+							"value": "true",
+							"description": "Ordena os Estados por Área"
 						}
 					]
 				}

@@ -28,11 +28,13 @@ paths:
               $ref: "#/components/schemas/State"
       responses:
         201:
-          description: "Sucesso"
+          description: "Created"
           content:
             application/json:
               schema:
                 $ref: "#/components/schemas/State"
+        404:
+          description: Bad Request.
     get:
       summary: Devolve um array com todos os Estados cadastrados.
       responses:
@@ -52,7 +54,7 @@ paths:
           name: sortByPopulation
           schema:
             type: boolean
-          description: Ordena os Estados por População do maior para o menor.
+          description: Ordena os Estados por População da maior para a menor.
         - in: query
           name: sortByArea
           schema:
@@ -66,7 +68,7 @@ paths:
         type: integer
       required: true
     get:
-      summary: Recupera um Estado pelo ID
+      summary: Recupera um Estado pelo Id.
       responses:
         200:
           description: Sucesso
@@ -80,7 +82,7 @@ paths:
             application/json:
               example: "Not Found"
     put:
-      summary: Atualiza um Estado pelo ID.
+      summary: Atualiza um Estado pelo Id.
       responses:
         200:
           description: Sucesso
@@ -94,7 +96,7 @@ paths:
             application/json:
               example: "Not Found"
     delete:
-      summary: Deleta um Estado pelo ID.
+      summary: Deleta um Estado pelo Id.
       responses:
         200:
           description: Sucesso
